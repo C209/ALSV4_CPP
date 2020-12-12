@@ -941,7 +941,7 @@ void AALSBaseCharacter::SetEssentialValues(float DeltaTime)
 
 	// Interp AimingRotation to current control rotation for smooth character rotation movement. Decrease InterpSpeed
 	// for slower but smoother movement.
-	AimingRotation = FMath::RInterpTo(AimingRotation, ReplicatedControlRotation, DeltaTime, 30);
+	AimingRotation = FMath::RInterpTo(AimingRotation, ReplicatedControlRotation, DeltaTime, -1);
 
 	// These values represent how the capsule is moving as well as how it wants to move, and therefore are essential
 	// for any data driven animation system. They are also used throughout the system for various functions,
@@ -1419,6 +1419,7 @@ EALSGait AALSBaseCharacter::GetActualGait(EALSGait AllowedGait) const
 void AALSBaseCharacter::SmoothCharacterRotation(FRotator Target, float TargetInterpSpeed, float ActorInterpSpeed,
                                                 float DeltaTime)
 {
+	ActorInterpSpeed = -1;
 	// Interpolate the Target Rotation for extra smooth rotation behavior
 	TargetRotation =
 		FMath::RInterpConstantTo(TargetRotation, Target, DeltaTime, TargetInterpSpeed);

@@ -139,7 +139,7 @@ public:
 
 	/** On Jumped*/
 	UFUNCTION(BlueprintCallable, Category = "ALS|Character States")
-	void EventOnJumped();
+	virtual void EventOnJumped();
 
 	UFUNCTION(BlueprintCallable, NetMulticast, Reliable, Category = "ALS|Character States")
 	void Multicast_OnJumped();
@@ -235,7 +235,7 @@ public:
 	FALSMovementSettings GetTargetMovementSettings() const;
 
 	UFUNCTION(BlueprintCallable, Category = "ALS|Movement System")
-	EALSGait GetAllowedGait() const;
+	virtual EALSGait GetAllowedGait() const;
 
 	UFUNCTION(BlueprintCallable, Category = "ALS|Movement States")
 	EALSGait GetActualGait(EALSGait AllowedGait) const;
@@ -405,21 +405,21 @@ protected:
 
 	void PlayerRightMovementInput(float Value);
 
-	void PlayerCameraUpInput(float Value);
+	virtual void PlayerCameraUpInput(float Value);
 
-	void PlayerCameraRightInput(float Value);
+	virtual void PlayerCameraRightInput(float Value);
 
 	void JumpPressedAction();
 
 	void JumpReleasedAction();
 
-	void SprintPressedAction();
+	virtual void SprintPressedAction();
 
-	void SprintReleasedAction();
+	virtual void SprintReleasedAction();
 
-	void AimPressedAction();
+	virtual void AimPressedAction();
 
-	void AimReleasedAction();
+	virtual void AimReleasedAction();
 
 	void CameraPressedAction();
 
